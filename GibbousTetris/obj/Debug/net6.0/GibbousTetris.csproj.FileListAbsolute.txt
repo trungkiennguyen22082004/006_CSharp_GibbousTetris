@@ -13,3 +13,18 @@ D:\GibbousTetris\obj\Debug\net6.0\refint\GibbousTetris.dll
 D:\GibbousTetris\obj\Debug\net6.0\GibbousTetris.pdb
 D:\GibbousTetris\obj\Debug\net6.0\GibbousTetris.genruntimeconfig.cache
 D:\GibbousTetris\obj\Debug\net6.0\ref\GibbousTetris.dll
+D:\#006 - C# - GibbousTetris\GibbousTetris\bin\Debug\net6.0\GibbousTetris.exe
+D:\#006 - C# - GibbousTetris\GibbousTetris\bin\Debug\net6.0\GibbousTetris.deps.json
+D:\#006 - C# - GibbousTetris\GibbousTetris\bin\Debug\net6.0\GibbousTetris.runtimeconfig.json
+D:\#006 - C# - GibbousTetris\GibbousTetris\bin\Debug\net6.0\GibbousTetris.dll
+D:\#006 - C# - GibbousTetris\GibbousTetris\bin\Debug\net6.0\GibbousTetris.pdb
+D:\#006 - C# - GibbousTetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.csproj.AssemblyReference.cache
+D:\#006 - C# - GibbousTetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.GeneratedMSBuildEditorConfig.editorconfig
+D:\#006 - C# - GibbousTetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.AssemblyInfoInputs.cache
+D:\#006 - C# - GibbousTetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.AssemblyInfo.cs
+D:\#006 - C# - GibbousTetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.csproj.CoreCompileInputs.cache
+D:\#006 - C# - GibbousTetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.dll
+D:\#006 - C# - GibbousTetris\GibbousTetris\obj\Debug\net6.0\refint\GibbousTetris.dll
+D:\#006 - C# - GibbousTetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.pdb
+D:\#006 - C# - GibbousTetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.genruntimeconfig.cache
+D:\#006 - C# - GibbousTetris\GibbousTetris\obj\Debug\net6.0\ref\GibbousTetris.dll

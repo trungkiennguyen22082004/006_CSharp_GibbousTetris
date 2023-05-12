@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wht5lodhvIbh8rfmhVlxQRcFIvTog3PiYkJMBWn05Qbu5tDPeyvuiEB/6a+N7WL6tOjjUbrz8MglIh5QdIxRdA==",
+  "dgSpecHash": "rlndTKsqvzsfm5oAS/l30S7hcdZLP8MQTAzuuGJgYtyCLNbw5oRK6oBozyyjPwJ4DWB/6L4QGse81BHCRCwumA==",
   "success": true,
-  "projectFilePath": "D:\\GibbousTetris\\GibbousTetris.csproj",
+  "projectFilePath": "D:\\#006 - C# - GibbousTetris\\GibbousTetris\\GibbousTetris.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

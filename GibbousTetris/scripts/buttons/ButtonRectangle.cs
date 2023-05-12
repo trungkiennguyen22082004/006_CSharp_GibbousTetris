@@ -14,7 +14,7 @@ namespace GibbousTetris
             _width = width;
             _height = height;
 
-            SplashKit.MoveSpriteTo(this.ButtonSprite, this.X, this.Y);
+            SplashKit.MoveSpriteTo(this.ButtonSprite, this.X + (this.Width / 2) - (this.ButtonSprite.Width / 2), this.Y + (this.Height / 2) - (this.ButtonSprite.Height / 2));
         }
 
         private double Width

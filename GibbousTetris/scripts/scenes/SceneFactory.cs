@@ -4,7 +4,7 @@
     {
         public static Scene CreateScene() 
         { 
-            return CreateScene(Constants.GAME_SCENE);
+            return CreateScene(Constants.HOME_SCENE);
         }
 
         public static Scene CreateScene(int sceneID)

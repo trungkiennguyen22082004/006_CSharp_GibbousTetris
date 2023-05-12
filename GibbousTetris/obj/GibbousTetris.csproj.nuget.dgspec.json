@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GibbousTetris\\GibbousTetris.csproj": {}
+    "D:\\#006 - C# - GibbousTetris\\GibbousTetris\\GibbousTetris.csproj": {}
   },
   "projects": {
-    "D:\\GibbousTetris\\GibbousTetris.csproj": {
+    "D:\\#006 - C# - GibbousTetris\\GibbousTetris\\GibbousTetris.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GibbousTetris\\GibbousTetris.csproj",
+        "projectUniqueName": "D:\\#006 - C# - GibbousTetris\\GibbousTetris\\GibbousTetris.csproj",
         "projectName": "GibbousTetris",
-        "projectPath": "D:\\GibbousTetris\\GibbousTetris.csproj",
+        "projectPath": "D:\\#006 - C# - GibbousTetris\\GibbousTetris\\GibbousTetris.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\GibbousTetris\\obj\\",
+        "outputPath": "D:\\#006 - C# - GibbousTetris\\GibbousTetris\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

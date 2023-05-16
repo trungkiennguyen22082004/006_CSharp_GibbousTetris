@@ -41,6 +41,7 @@ namespace GibbousTetris
             BlocksController.Instance.Update();
             _currentTetromino.Update();
 
+            // Most part of each (_timeOfSteps) second, for manipulate the tetrominno
             if ((_timer.Ticks % (1000 * _timeOfSteps)) <= (1000 * _timeOfSteps - 50))
             {
                 _wasMovedDown = false;
@@ -66,6 +67,7 @@ namespace GibbousTetris
                     _currentTetromino.MoveToBottom();
                 }
             }
+            // The rest of each (_timeOfSteps) second, for notify if the tetromino has been terminated, if not, move down automatedly
             else
             {
                 if (!_wasMovedDown)

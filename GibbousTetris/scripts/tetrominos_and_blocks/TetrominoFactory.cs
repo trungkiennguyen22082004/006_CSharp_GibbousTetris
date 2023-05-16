@@ -2,22 +2,22 @@
 {
     public static class TetrominoFactory
     {
-        // Create a random tetromino with default postion
+        // Create a random tetromino with default position
         public static Tetromino CreateTetromino()
         {
             return CreateTetromino((new Random()).Next(7));
         }
-        // Create a specific tetromino with default postion
+        // Create a specific tetromino with default position
         public static Tetromino CreateTetromino(int type) 
         {
             return CreateTetromino(type, 5, 0);
         }
-        // Create a random tetromino with custom postion
+        // Create a random tetromino with custom position
         public static Tetromino CreateTetromino(int xIndex, int yIndex)
         {
             return CreateTetromino((new Random()).Next(7), xIndex, yIndex);
         }
-        // Create a specific tetromino with custom postion
+        // Create a specific tetromino with custom position
         public static Tetromino CreateTetromino(int type, int xIndex, int yIndex)
         {
             switch (type)

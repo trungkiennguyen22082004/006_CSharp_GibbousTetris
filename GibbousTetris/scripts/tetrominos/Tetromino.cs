@@ -2,6 +2,7 @@
 
 namespace GibbousTetris
 {
+
     public abstract class Tetromino
     {
         private Color _tetrominoColor;
@@ -12,10 +13,10 @@ namespace GibbousTetris
 
         public enum Angle
         {
-            Up = 0,
-            Right = 90,
-            Down = 180,
-            Left = 270
+            Up,
+            Right,
+            Down,
+            Left
         }
 
         public Tetromino(int xIndex, int yIndex, Color color, Angle originAngle)
@@ -32,10 +33,6 @@ namespace GibbousTetris
             this.Update();
         }
 
-        private Color TetrominoColor
-        {
-            get => _tetrominoColor;
-        }
         protected Angle TetrominoAngle
         {
             get => _tetrominoAngle;
@@ -104,10 +101,10 @@ namespace GibbousTetris
         }
         private void AddBlocks()
         {
-            this.TheTetromino.Add(new Block(this.TetrominoColor));
-            this.TheTetromino.Add(new Block(this.TetrominoColor));
-            this.TheTetromino.Add(new Block(this.TetrominoColor));
-            this.TheTetromino.Add(new Block(this.TetrominoColor));
+            this.TheTetromino.Add(new Block(_tetrominoColor));
+            this.TheTetromino.Add(new Block(_tetrominoColor));
+            this.TheTetromino.Add(new Block(_tetrominoColor));
+            this.TheTetromino.Add(new Block(_tetrominoColor));
         }
         public abstract void Update();
         public void Draw()

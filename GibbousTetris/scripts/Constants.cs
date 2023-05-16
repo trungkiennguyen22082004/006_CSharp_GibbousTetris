@@ -43,5 +43,8 @@
         public const int TETROMINO_TYPE_S = 4;
         public const int TETROMINO_TYPE_T = 5;
         public const int TETROMINO_TYPE_Z = 6;
+
+        // -------------------------------------------------------------------------
+        // Gameplay attributes
     }
 }

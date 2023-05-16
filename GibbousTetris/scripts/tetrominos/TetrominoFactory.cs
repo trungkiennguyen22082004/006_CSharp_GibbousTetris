@@ -1,6 +1,6 @@
 ﻿namespace GibbousTetris
 {
-    public class TetrominoFactory
+    public static class TetrominoFactory
     {
         // Create a random tetromino with default postion
         public static Tetromino CreateTetromino()

@@ -109,7 +109,10 @@ namespace GibbousTetris
         }
         public void MoveDown()
         {
-            _yIndex++;
+            if (CanMoveDown) 
+            {
+                _yIndex++;
+            }
         }
     }
 }

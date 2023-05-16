@@ -11,7 +11,7 @@ namespace GibbousTetris
         public HomeScene()
         {
             _settingButton = new ButtonCircle(Color.Gray, Color.Black, 50, 50, 20, "Setting", Constants.MEDIA_FOLDER_LOCATION + "setting.png");
-            _playButton = new ButtonRectangle(Color.Gray, Color.Black, 360, 380, 80, 40, "Play", Constants.MEDIA_FOLDER_LOCATION + "setting.png");
+            _playButton = new ButtonRectangle(Color.Transparent, Color.Black, 360, 380, 80, 40, "Play", Constants.MEDIA_FOLDER_LOCATION + "play.png");
         }
 
         public override void Update()
@@ -20,11 +20,11 @@ namespace GibbousTetris
 
             if (_settingButton.IsClicked)
             {
-                GameExecuter.Instance.RequestChangeScene(Constants.SETTING_SCENE);
+                GameExecuter.Instance.ChangeScene(Constants.SETTING_SCENE);
             }
             else if (_playButton.IsClicked) 
             {
-                GameExecuter.Instance.RequestChangeScene(Constants.GAME_SCENE);
+                GameExecuter.Instance.ChangeScene(Constants.GAME_SCENE);
             }
         }
         public override void Draw()

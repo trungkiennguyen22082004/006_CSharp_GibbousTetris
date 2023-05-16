@@ -19,7 +19,7 @@ namespace GibbousTetris
             }
         }
 
-        private int[, ] _blocksController;
+        private int[, ] _blocksIndex;
         private List<Block> _blocksDisplay;
 
         private BlocksController() : this(12, 20)
@@ -27,7 +27,7 @@ namespace GibbousTetris
         }
         private BlocksController(int numOfXBlocks, int numOfYBlocks) 
         {
-            _blocksController = new int[numOfYBlocks, numOfXBlocks];
+            _blocksIndex = new int[numOfYBlocks, numOfXBlocks];
             _blocksDisplay = new List<Block>();
         }
 
@@ -36,20 +36,20 @@ namespace GibbousTetris
         { 
             get
             {
-                for (int y = 0; y < _blocksController.GetLength(0); y++)
+                for (int y = 0; y < _blocksIndex.GetLength(0); y++)
                 {
-                    for (int x = 0; x < _blocksController.GetLength(1); x++)
+                    for (int x = 0; x < _blocksIndex.GetLength(1); x++)
                     {
-                        _blocksController[y, x] = 0;
+                        _blocksIndex[y, x] = 0;
                     }
                 }
 
                 foreach (Block block in _blocksDisplay)
                 {
-                    _blocksController[block.YIndex, block.XIndex] = 1;
+                    _blocksIndex[block.YIndex, block.XIndex] = 1;
                 }
 
-                return _blocksController;
+                return _blocksIndex;
             }
         }
 
@@ -74,7 +74,7 @@ namespace GibbousTetris
             //     List of Y-indexes of line filled by blocks
             List<int> listOfFilledLine = new List<int>();
 
-            for (int yIndex = 0; yIndex < _blocksController.GetLength(0); yIndex++)
+            for (int yIndex = 0; yIndex < _blocksIndex.GetLength(0); yIndex++)
             {
                 // Number of blocks in this line
                 int numOfBlocks = 0;
@@ -87,7 +87,7 @@ namespace GibbousTetris
                     }
                 }
 
-                if (numOfBlocks == _blocksController.GetLength(1)) 
+                if (numOfBlocks == _blocksIndex.GetLength(1)) 
                 {
                     listOfFilledLine.Add(yIndex);
                 }

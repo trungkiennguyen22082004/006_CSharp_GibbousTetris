@@ -9,7 +9,6 @@ namespace GibbousTetris
         public ButtonCircle() : this(Color.Black, Color.White, 100, 100, 20, "Default", "D:/GibbousTetris/media/default.png")
         {
         }
-
         public ButtonCircle(Color btnColor, Color otlColor, double x, double y, double radius, string bitmapName, string bitmapLocation) : base(btnColor, otlColor, x, y, bitmapName,bitmapLocation)
         {
             _radius = radius;

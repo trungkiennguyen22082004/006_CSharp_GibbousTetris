@@ -1,4 +1,5 @@
 ﻿using SplashKitSDK;
+using System.Security.Cryptography.X509Certificates;
 
 namespace GibbousTetris
 {
@@ -14,6 +15,7 @@ namespace GibbousTetris
         {
             _btnColor = btnColor;
             _otlColor = otlColor;
+
             _x = x;
             _y = y;
 

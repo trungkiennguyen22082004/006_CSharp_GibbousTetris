@@ -9,21 +9,18 @@ namespace GibbousTetris
         private Timer _timer;
 
         // Duration of time in seconds for each Move Down
-        private double _timeOfSteps;
+        private int _timeOfSteps;
 
         private Tetromino _currentTetromino;
         private Tetromino _nextTetromino;
 
         private bool _wasMovedDown;
 
-        public GameScene() : this(1)
-        { 
-        }
-        public GameScene(double timeOfSteps)
+        public GameScene()
         {
             BlocksController.Instance.Reset();
-            _timeOfSteps = timeOfSteps;
 
+            _timeOfSteps = (int)GameExecuter.Instance.Level;
             _homeButton = new ButtonCircle(Color.Gray, Color.Black, 50, 50, 20, "Home", Constants.MEDIA_FOLDER_LOCATION + "home.png");
 
             _timer = new Timer("Game Timer");
@@ -38,7 +35,7 @@ namespace GibbousTetris
         {
             if (_homeButton.IsClicked)
             {
-                GameExecuter.Instance.RequestChangeScene(Constants.HOME_SCENE);
+                GameExecuter.Instance.ChangeScene(Constants.HOME_SCENE);
             }
 
             BlocksController.Instance.Update();

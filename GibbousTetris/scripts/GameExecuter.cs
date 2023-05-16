@@ -2,6 +2,13 @@
 
 namespace GibbousTetris
 {
+    public enum LevelType
+    {
+        Hard = 1,
+        Normal = 2,
+        Easy = 3
+    }
+
     public class GameExecuter
     {
         private static GameExecuter? _instance;
@@ -22,19 +29,20 @@ namespace GibbousTetris
 
         private Window _gameWindow;
         private Scene _currentScene;
-        private Scene? _nextScene;
-
-        public Scene? NextScene
-        {
-            get => _nextScene;
-            set => _nextScene = value;
-        }
 
         private GameExecuter()
         {
             _gameWindow = new Window("Gibbous Teltris", Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
 
             _currentScene = SceneFactory.CreateScene();
+
+            Level = LevelType.Hard;
+        }
+
+        public LevelType Level
+        {
+            get;
+            set;
         }
 
         public void Execute()
@@ -54,24 +62,15 @@ namespace GibbousTetris
         private void Update()
         {
             _currentScene.Update();
-            this.ChangeScene();
         }
         private void Draw()
         {
             _currentScene.Draw();
         }
 
-        private void ChangeScene()
+        public void ChangeScene(int sceneID)
         {
-            if (_nextScene != null)
-            {
-                _currentScene = _nextScene;
-                _nextScene = null;
-            }
-        }
-        public void RequestChangeScene(int sceneID)
-        {
-            _nextScene = SceneFactory.CreateScene(sceneID);
+            _currentScene = SceneFactory.CreateScene(sceneID);
         }
     }
 }

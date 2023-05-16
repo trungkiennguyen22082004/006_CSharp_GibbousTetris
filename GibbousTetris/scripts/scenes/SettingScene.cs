@@ -18,7 +18,7 @@ namespace GibbousTetris
 
             if (_homeButton.IsClicked)
             {
-                GameExecuter.Instance.RequestChangeScene(Constants.HOME_SCENE);
+                GameExecuter.Instance.ChangeScene(Constants.HOME_SCENE);
             }
         }
         public override void Draw()

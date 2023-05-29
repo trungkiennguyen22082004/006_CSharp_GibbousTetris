@@ -1,62 +1,57 @@
-﻿using System;
-using System.Reflection;
+﻿using SplashKitSDK;
 
 namespace GibbousTetris
 {
     public class BlocksController
     {
-        private static BlocksController? _instance;
-        public static BlocksController Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new BlocksController();
-                }
+        private SoundEffect _collectingSE;
 
-                return _instance;
-            }
-        }
+        private List<Block> _terminatedBlocks;
+        private int _numOfRows, _numOfCols;
 
-        private int[, ] _blocksIndex;
-        private List<Block> _blocksDisplay;
+        private uint _scoreIndex;
 
-        private BlocksController() : this(12, 20)
+        public BlocksController() : this(12, 20)
         {
         }
-        private BlocksController(int numOfXBlocks, int numOfYBlocks) 
+        public BlocksController(int numOfXBlocks, int numOfYBlocks)
         {
-            _blocksIndex = new int[numOfYBlocks, numOfXBlocks];
-            _blocksDisplay = new List<Block>();
+            _collectingSE = new SoundEffect("Collecting", Constants.MEDIA_FOLDER_LOCATION + "collecting.wav");
+
+            _numOfCols = numOfXBlocks;
+            _numOfRows = numOfYBlocks;
+            _terminatedBlocks = new List<Block>();
+
+            _scoreIndex = 0;
         }
 
         // All terminated blocks presented in an integer 2D-array
-        public int[, ] BlocksIndex
-        { 
+        public int[,] BlocksIndex
+        {
             get
             {
-                for (int y = 0; y < _blocksIndex.GetLength(0); y++)
+                int[, ] blocksIndex = new int[_numOfRows, _numOfCols];
+                for (int y = 0; y < _numOfRows; y++)
                 {
-                    for (int x = 0; x < _blocksIndex.GetLength(1); x++)
+                    for (int x = 0; x < _numOfCols; x++)
                     {
-                        _blocksIndex[y, x] = 0;
+                        blocksIndex[y, x] = 0;
                     }
                 }
 
-                foreach (Block block in _blocksDisplay)
+                foreach (Block block in _terminatedBlocks)
                 {
-                    _blocksIndex[block.YIndex, block.XIndex] = 1;
+                    blocksIndex[block.PointIndexes.YIndex, block.PointIndexes.XIndex] = 1;
                 }
 
-                return _blocksIndex;
+                return blocksIndex;
             }
         }
 
-        // All terminated blocks
-        private List<Block> BlocksDisplay
+        // This is raw score calculated without considering the Level Type and Total Gameplay Time from the GameScene
+        public uint ScoreIndex
         {
-            get => _blocksDisplay;
+            get => _scoreIndex;
         }
 
         // Add the new terminating blocks to the list of terminated blocks
@@ -64,69 +59,87 @@ namespace GibbousTetris
         {
             for (int i = 0; i < 4; i++)
             {
-                this.BlocksDisplay.Add(tetromino[i]);
+                _terminatedBlocks.Add(tetromino[i]);
             }
         }
 
         public void Update()
         {
-            // DELETE THE LINES THAT ARE COMPLETED/FILLED
-            //     List of Y-indexes of line filled by blocks
-            List<int> listOfFilledLine = new List<int>();
-
-            for (int yIndex = 0; yIndex < _blocksIndex.GetLength(0); yIndex++)
+            for (int row = _numOfRows - 1; row >= 0; row--)
             {
-                // Number of blocks in this line
-                int numOfBlocks = 0;
+                bool allOnes = true;
 
-                foreach (Block block in _blocksDisplay)
+                for (int col = 0; col < _numOfCols; col++)
                 {
-                    if (block.YIndex == yIndex)
+                    if (this.BlocksIndex[row, col] != 1)
                     {
-                        numOfBlocks++;
+                        allOnes = false;
+                        break;
                     }
                 }
 
-                if (numOfBlocks == _blocksIndex.GetLength(1)) 
+                if (allOnes)
                 {
-                    listOfFilledLine.Add(yIndex);
-                }
-            }
+                    // Remove that line
+                    _terminatedBlocks.RemoveAll(block => block.PointIndexes.YIndex == row);
 
-            listOfFilledLine.Sort();
+                    // Gain score
+                    _scoreIndex++;
 
-            for (int yIndex = 0; yIndex < listOfFilledLine.Count; yIndex++)
-            {
-                // Delete process
-                for (int index = 0; index < _blocksDisplay.Count; index++)
-                {
-                    if (_blocksDisplay[index].YIndex == listOfFilledLine[yIndex])
+                    // Shift all blocks above it down by one position
+                    foreach (Block block in _terminatedBlocks)
                     {
-                        _blocksDisplay.Remove(_blocksDisplay[index]);
-                        index--;
+                        if (block.PointIndexes.YIndex < row)
+                        {
+                            block.MoveDown();
+                        }
                     }
-                }
 
-                // Terminated blocks that are above each removed line will be automatically moved down by 1
-                foreach (Block block in _blocksDisplay)
-                {
-                    if (block.YIndex < listOfFilledLine[yIndex])
-                    {
-                        block.MoveDown();
-                    }
+                    _collectingSE.Play(1, AudioManager.Instance.SoundVolume);
                 }
             }
         }
         public void Draw()
         {
-            foreach (Block block in _blocksDisplay)
+            foreach (Block block in _terminatedBlocks)
             {
                 block.Draw();
             }
         }
-        public void Reset()
+
+        public void Save(StreamWriter writer)
         {
-            _instance = new BlocksController();
+            writer.WriteLine("Blocks Controller");
+            writer.WriteLine(_numOfCols);
+            writer.WriteLine(_numOfRows);
+            writer.WriteLine(_scoreIndex);
+            writer.WriteLine(_terminatedBlocks.Count);
+            foreach (Block block in _terminatedBlocks)
+            {
+                block.Save(writer);
+            }
+        }
+        public void Load(StreamReader reader)
+        {
+            string? kind = reader.ReadLine();
+            if (kind == "Blocks Controller")
+            {
+                _numOfCols = reader.ReadInteger();
+                _numOfRows = reader.ReadInteger();
+                _scoreIndex = (uint)reader.ReadInteger();
+                int blocksCount = reader.ReadInteger();
+
+                _terminatedBlocks = new List<Block>();
+                for (int i = 0; i < blocksCount; i++) 
+                {
+                    _terminatedBlocks.Add(new Block(this));
+                    _terminatedBlocks[i].Load(reader);
+                }
+            }
+            else
+            {
+                throw new InvalidDataException("Unknown blocks controller kind: " + kind);
+            }
         }
     }
 }

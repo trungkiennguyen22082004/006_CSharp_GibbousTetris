@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <Folder Include="media\" />
+    <Folder Include="font\" />
+    <Folder Include="text\" />
   </ItemGroup>
 
 </Project>

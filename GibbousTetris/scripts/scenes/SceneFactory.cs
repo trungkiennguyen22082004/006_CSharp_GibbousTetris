@@ -1,13 +1,13 @@
 ﻿namespace GibbousTetris
 {
-    public static class SceneFactory
+    public class SceneFactory
     {
-        public static Scene CreateScene() 
-        { 
+        public Scene CreateScene() 
+        {
             return CreateScene(Constants.HOME_SCENE);
         }
 
-        public static Scene CreateScene(int sceneID)
+        public Scene CreateScene(int sceneID)
         {
             Scene scene;
 
@@ -38,6 +38,9 @@
                     scene = new EndingScene();
                     break;
                 }
+                case Constants.RESULT_SCENE:
+                    scene = new ResultScene();
+                    break;
                 default:
                 {
                     throw new ArgumentException("Invalid scene ID!");
@@ -45,6 +48,10 @@
             }
 
             return scene;
+        }
+        public Scene CreateEndScene(uint playedTime, uint score)
+        {
+            return new EndingScene(playedTime, score);
         }
     }
 }

@@ -4,30 +4,28 @@ namespace GibbousTetris
 {
     public class Block
     {
-        private Color _borderColor;
+        private BlocksController _blocksCtrl;
+
         private Color _color;
-        private int _xIndex, _yIndex;
+        private Point2DIndex _pointIndexes;
 
-        public Block(Color blockColor) : this(blockColor, -100, -100)
+        public Block(BlocksController blocksCtrl) : this(blocksCtrl, Color.Black, new Point2DIndex { XIndex = 11, YIndex = 19})
         {
         }
-        public Block(Color blockColor, int xIndex, int yIndex) : this(Color.Black, blockColor, xIndex, yIndex)
+        public Block(BlocksController blocksCtrl, Color blockColor, Point2DIndex pointIndexes)
         {
-        }
-        public Block(Color borderColor, Color blockColor, int xIndex, int yIndex)
-        {
-            _borderColor = borderColor;
+            _blocksCtrl = blocksCtrl;
+
             _color = blockColor;
-
-            this.GetIndexes(xIndex, yIndex);
+            _pointIndexes = pointIndexes;
         }
 
         private Rectangle BorderRectangle
         {
             get => new Rectangle()
             {
-                X = this.X,
-                Y = this.Y,
+                X = this.Point.X,
+                Y = this.Point.Y,
                 Width = Constants.SIZE_OF_BLOCK,
                 Height = Constants.SIZE_OF_BLOCK
             };
@@ -36,51 +34,47 @@ namespace GibbousTetris
         {
             get => new Rectangle()
             {
-                X = this.X + (Constants.SIZE_OF_BLOCK / 10),
-                Y = this.Y + (Constants.SIZE_OF_BLOCK / 10),
+                X = this.Point.X + (Constants.SIZE_OF_BLOCK / 10),
+                Y = this.Point.Y + (Constants.SIZE_OF_BLOCK / 10),
                 Width = Constants.SIZE_OF_BLOCK - (Constants.SIZE_OF_BLOCK / 5),
                 Height = Constants.SIZE_OF_BLOCK - (Constants.SIZE_OF_BLOCK / 5)
             };
         }
-        public double X
+        public Point2D Point
         {
-            get => Constants.BOARD_X_POSITION + (_xIndex * Constants.SIZE_OF_BLOCK);
+            get => new Point2D()
+            {
+                X = 50 + (this.PointIndexes.XIndex * Constants.SIZE_OF_BLOCK),
+                Y = 100 + (this.PointIndexes.YIndex * Constants.SIZE_OF_BLOCK)
+            };
         }
-        public double Y
+        public Point2DIndex PointIndexes
         {
-            get => Constants.BOARD_Y_POSITION + (_yIndex * Constants.SIZE_OF_BLOCK);
-        }
-        public int XIndex
-        {
-            get => _xIndex;
-        }
-        public int YIndex
-        {
-            get => _yIndex;
+            get => _pointIndexes;
+            set => _pointIndexes = value;
         }
 
         public void Draw()
         {
             // Draw border
-            SplashKit.FillRectangle(_borderColor, this.BorderRectangle);
+            SplashKit.FillRectangle(Color.Black, this.BorderRectangle);
 
             // Draw inner rectagle
             SplashKit.FillRectangle(_color, this.InnerRectangle);
         }
 
-        public void GetIndexes(int xIndex, int yIndex)
+        public void GetIndexes(Point2DIndex pointIndexes)
         {
-            _xIndex = xIndex;
-            _yIndex = yIndex;
+            _pointIndexes = pointIndexes;
         }
 
         public bool CanMoveLeft
         {
             get
             {
-                if (this.XIndex > 0) 
+                if (this.PointIndexes.XIndex > 0) 
                 {
-                    return (BlocksController.Instance.BlocksIndex[this.YIndex, this.XIndex - 1] == 0);
+                    return (_blocksCtrl.BlocksIndex[this.PointIndexes.YIndex, this.PointIndexes.XIndex - 1] == 0);
                 }
                 return false;
             }
@@ -89,9 +83,9 @@ namespace GibbousTetris
         {
             get
             {
-                if (this.XIndex < (BlocksController.Instance.BlocksIndex.GetLength(1) - 1))
+                if (this.PointIndexes.XIndex < (_blocksCtrl.BlocksIndex.GetLength(1) - 1))
                 {
-                    return (BlocksController.Instance.BlocksIndex[this.YIndex, this.XIndex + 1] == 0);
+                    return (_blocksCtrl.BlocksIndex[this.PointIndexes.YIndex, this.PointIndexes.XIndex + 1] == 0);
                 }
                 return false;
             }
@@ -100,18 +94,48 @@ namespace GibbousTetris
         {
             get
             {
-                if (this.YIndex < (BlocksController.Instance.BlocksIndex.GetLength(0) - 1))
+                if (this.PointIndexes.YIndex < (_blocksCtrl.BlocksIndex.GetLength(0) - 1))
                 {
-                    return (BlocksController.Instance.BlocksIndex[this.YIndex + 1, this.XIndex] == 0);
+                    return (_blocksCtrl.BlocksIndex[this.PointIndexes.YIndex + 1, this.PointIndexes.XIndex] == 0);
                 }
                 return false;
             }
         }
+
         public void MoveDown()
         {
-            if (CanMoveDown) 
+            this.PointIndexes = new Point2DIndex()
             {
-                _yIndex++;
+                XIndex = this.PointIndexes.XIndex,
+                YIndex = this.PointIndexes.YIndex + 1
+            };
+        }
+
+        public void Save(StreamWriter writer) 
+        {
+            writer.WriteLine("Block");
+            writer.WriteColor(_color);
+            writer.WriteLine(_pointIndexes.XIndex);
+            writer.WriteLine(_pointIndexes.YIndex);
+        }
+        public void Load(StreamReader reader) 
+        {
+            string? kind = reader.ReadLine();
+            if (kind == "Block")
+            {
+                _color = reader.ReadColor();
+
+                int xIndex = reader.ReadInteger();
+                int yIndex = reader.ReadInteger();
+                _pointIndexes = new Point2DIndex()
+                {
+                    XIndex = xIndex,
+                    YIndex = yIndex
+                };
+            }
+            else
+            {
+                throw new InvalidDataException("Unknown block kind: " + kind);
             }
         }
     }

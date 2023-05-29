@@ -6,7 +6,7 @@ namespace GibbousTetris
     {
         private double _width, _height;
 
-        public ButtonRectangle() : this(Color.Black, Color.White, 100, 100, 100, 100, "Default", "D:/GibbousTetris/media/default.png")
+        public ButtonRectangle() : this(Color.RGBAColor(1, 1, 1, 0), Color.RGBAColor(1, 1, 1, 0), 0, 0, 800, 800, "Default", "default.png")
         {
         }
         public ButtonRectangle(Color btnColor, Color otlColor, double x, double y, double width, double height, string bitmapName, string bitmapLocation) : base(btnColor, otlColor, x, y, bitmapName, bitmapLocation)
@@ -54,14 +54,17 @@ namespace GibbousTetris
 
         public override void Draw()
         {
-            if (this.IsMouseHover)
+            if (!this.IsDisabled)
             {
-                this.DrawOutline();
+                if (this.IsMouseHover)
+                {
+                    this.DrawOutline();
+                }
+
+                SplashKit.FillRectangle(this.ButtonColor, this.BtnRectangle);
+
+                SplashKit.DrawSprite(this.ButtonSprite);
             }
-
-            SplashKit.FillRectangle(this.ButtonColor, this.BtnRectangle);
-
-            SplashKit.DrawSprite(this.ButtonSprite);
         }
         protected override void DrawOutline()
         {

@@ -12,8 +12,6 @@ namespace GibbousTetris
         public ButtonCircle(Color btnColor, Color otlColor, double x, double y, double radius, string bitmapName, string bitmapLocation) : base(btnColor, otlColor, x, y, bitmapName,bitmapLocation)
         {
             _radius = radius;
-
-            SplashKit.MoveSpriteTo(this.ButtonSprite, this.X - (this.ButtonSprite.Width / 2), this.Y - (this.ButtonSprite.Height / 2));
         }
 
         private double Radius
@@ -53,14 +51,18 @@ namespace GibbousTetris
 
         public override void Draw()
         {
-            if (this.IsMouseHover)
+            if (!this.IsDisabled)
             {
-                this.DrawOutline();
+                if (this.IsMouseHover)
+                {
+                    this.DrawOutline();
+                }
+
+                SplashKit.FillCircle(this.ButtonColor, this.BtnCircle);
+
+                SplashKit.MoveSpriteTo(this.ButtonSprite, this.X - (this.ButtonSprite.Width / 2), this.Y - (this.ButtonSprite.Height / 2));
+                SplashKit.DrawSprite(this.ButtonSprite);
             }
-
-            SplashKit.FillCircle(this.ButtonColor, this.BtnCircle);
-
-            SplashKit.DrawSprite(this.ButtonSprite);
         }
         protected override void DrawOutline()
         {

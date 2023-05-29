@@ -4,55 +4,41 @@ namespace GibbousTetris
 {
     public class GameBoard
     {
-        private static GameBoard? _instance;
-        public static GameBoard Instance
+        private Color _borderColor, _backgroundColor, _decoratedColor;
+        private Point2D _boardPos;
+        private Point2DIndex _numsOfCells;
+
+        public GameBoard() : this(Color.RGBColor(128, 128, 128), Color.White, Color.RGBColor(217, 217, 217), new Point2D() { X = 50, Y = 100 }, new Point2DIndex() { XIndex = 12, YIndex = 20 } )
         {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new GameBoard();
-                }
-
-                return _instance;
-            }
         }
-
-        private Color _borderColor;
-        private Color _backgroundColor;
-        private Color _boardColor;
-
-        private GameBoard() : this(Color.RGBColor(128, 128, 128), Color.White, Color.RGBColor(217, 217, 217))
-        { 
+        public GameBoard(Point2D boardPos, Point2DIndex numsOfCells) : this(Color.RGBColor(128, 128, 128), Color.White, Color.RGBColor(217, 217, 217), boardPos, numsOfCells)
+        {
         }
-        private GameBoard(Color borderColor, Color backgroudColor, Color boardColor) 
+        public GameBoard(Color borderColor, Color backgroudColor, Color decoratedColor, Point2D boardPos, Point2DIndex numsOfCells) 
         {
             // Colors of the gameboard
             _borderColor = borderColor;
             _backgroundColor = backgroudColor;
-            _boardColor = boardColor;
+            _decoratedColor = decoratedColor;
+
+            _boardPos = boardPos;
+            _numsOfCells = numsOfCells;
         }
 
         public void Draw()
         {
             // Draw border of the gameboard
-            SplashKit.FillRectangle(_borderColor, Constants.BOARD_X_POSITION - 5, Constants.BOARD_Y_POSITION - 5, (Constants.SIZE_OF_BLOCK * Constants.NUM_OF_X_CELLS) + 10, (Constants.SIZE_OF_BLOCK * Constants.NUM_OF_Y_CELLS) + 10);
+            SplashKit.FillRectangle(_borderColor, _boardPos.X - 5, _boardPos.Y - 5, (Constants.SIZE_OF_BLOCK * _numsOfCells.XIndex) + 10, (Constants.SIZE_OF_BLOCK * _numsOfCells.YIndex) + 10);
 
             // Draw gameboard background
-            SplashKit.FillRectangle(_backgroundColor, Constants.BOARD_X_POSITION, Constants.BOARD_Y_POSITION, (Constants.SIZE_OF_BLOCK * Constants.NUM_OF_X_CELLS), (Constants.SIZE_OF_BLOCK * Constants.NUM_OF_Y_CELLS));
+            SplashKit.FillRectangle(_backgroundColor, _boardPos.X, _boardPos.Y, (Constants.SIZE_OF_BLOCK * _numsOfCells.XIndex), (Constants.SIZE_OF_BLOCK * _numsOfCells.YIndex));
 
             // Draw decorative lines on the gameboard
-            for (int i = 1; i <= (Constants.NUM_OF_X_CELLS * (Constants.SIZE_OF_BLOCK / Constants.NUM_OF_LINES_RATE)); i++) 
+            for (int i = 1; i <= (_numsOfCells.XIndex * (Constants.SIZE_OF_BLOCK / 6)); i++) 
             {
-                SplashKit.DrawLine(_boardColor, Constants.BOARD_X_POSITION + i * Constants.NUM_OF_LINES_RATE, Constants.BOARD_Y_POSITION, Constants.BOARD_X_POSITION, Constants.BOARD_Y_POSITION + i * (Constants.NUM_OF_LINES_RATE * ((double)Constants.NUM_OF_Y_CELLS / Constants.NUM_OF_X_CELLS)));
-                SplashKit.DrawLine(_boardColor, Constants.BOARD_X_POSITION + i * Constants.NUM_OF_LINES_RATE, Constants.BOARD_Y_POSITION + (Constants.SIZE_OF_BLOCK * Constants.NUM_OF_Y_CELLS), Constants.BOARD_X_POSITION + (Constants.SIZE_OF_BLOCK * Constants.NUM_OF_X_CELLS), Constants.BOARD_Y_POSITION + i * (Constants.NUM_OF_LINES_RATE * ((double)Constants.NUM_OF_Y_CELLS / Constants.NUM_OF_X_CELLS)));
+                SplashKit.DrawLine(_decoratedColor, _boardPos.X + i * 6, _boardPos.Y, _boardPos.X, _boardPos.Y + i * (6 * ((double)_numsOfCells.YIndex / _numsOfCells.XIndex)));
+                SplashKit.DrawLine(_decoratedColor, _boardPos.X + i * 6, _boardPos.Y + (Constants.SIZE_OF_BLOCK * _numsOfCells.YIndex), _boardPos.X + (Constants.SIZE_OF_BLOCK * _numsOfCells.XIndex), _boardPos.Y + i * (6 * ((double)_numsOfCells.YIndex / _numsOfCells.XIndex)));
             }
-
-            // Draw sideboard for the next tetromino
-            SplashKit.DrawText("NEXT", Color.Black, 575, 50);
-
-            SplashKit.FillRectangle(_borderColor, Constants.SIDEBOARD_X_POSITION - 5, Constants.SIDEBOARD_Y_POSITION - 5, Constants.SIZE_OF_BLOCK * 6 + 10, Constants.SIZE_OF_BLOCK * 4 + 10);
-            SplashKit.FillRectangle(_backgroundColor, Constants.SIDEBOARD_X_POSITION, Constants.SIDEBOARD_Y_POSITION, Constants.SIZE_OF_BLOCK * 6, Constants.SIZE_OF_BLOCK * 4);
         }
     }
 }

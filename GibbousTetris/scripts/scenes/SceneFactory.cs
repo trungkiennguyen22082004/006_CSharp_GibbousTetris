@@ -4,7 +4,7 @@
     {
         public Scene CreateScene() 
         {
-            return CreateScene(Constants.HOME_SCENE);
+            return CreateScene(Constants.INTRO_SCENE);
         }
 
         public Scene CreateScene(int sceneID)
@@ -13,6 +13,11 @@
 
             switch (sceneID)
             {
+                case Constants.INTRO_SCENE:
+                {
+                    scene = new IntroScene();
+                    break;
+                }
                 case Constants.HOME_SCENE:
                 {
                     scene = new HomeScene();

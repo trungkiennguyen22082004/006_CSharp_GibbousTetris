@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\#006 - C# - GibbousTetris\\GibbousTetris\\GibbousTetris.csproj",
+      "projectUniqueName": "D:\\MOON006 - CSharp - GibbousTetris\\GibbousTetris\\GibbousTetris.csproj",
       "projectName": "GibbousTetris",
-      "projectPath": "D:\\#006 - C# - GibbousTetris\\GibbousTetris\\GibbousTetris.csproj",
+      "projectPath": "D:\\MOON006 - CSharp - GibbousTetris\\GibbousTetris\\GibbousTetris.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\#006 - C# - GibbousTetris\\GibbousTetris\\obj\\",
+      "outputPath": "D:\\MOON006 - CSharp - GibbousTetris\\GibbousTetris\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -6,7 +6,7 @@ namespace GibbousTetris
     {
         // LOCATIONS
         //      Project location, change this to match the code if you have just downloaded
-        public const string PROJECT_LOCATION = "D:/MOON006 - CSharp - GibbousTetris/";
+        public const string PROJECT_LOCATION = "D:/MOON006 - C# - Gibbous Tetris/";
 
         public const string MEDIA_FOLDER_LOCATION = PROJECT_LOCATION + "GibbousTetris/media/";
         public const string FONT_FOLDER_LOCATION = PROJECT_LOCATION + "GibbousTetris/font/";

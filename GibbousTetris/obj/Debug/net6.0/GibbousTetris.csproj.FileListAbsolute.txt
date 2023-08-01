@@ -43,3 +43,18 @@ D:\MOON006 - CSharp - GibbousTetris\GibbousTetris\bin\Debug\net6.0\GibbousTetris
 D:\MOON006 - CSharp - GibbousTetris\GibbousTetris\bin\Debug\net6.0\GibbousTetris.pdb
 D:\MOON006 - CSharp - GibbousTetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.genruntimeconfig.cache
 D:\MOON006 - CSharp - GibbousTetris\GibbousTetris\obj\Debug\net6.0\ref\GibbousTetris.dll
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\bin\Debug\net6.0\GibbousTetris.exe
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\bin\Debug\net6.0\GibbousTetris.deps.json
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\bin\Debug\net6.0\GibbousTetris.runtimeconfig.json
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\bin\Debug\net6.0\GibbousTetris.dll
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\bin\Debug\net6.0\GibbousTetris.pdb
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.csproj.AssemblyReference.cache
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.GeneratedMSBuildEditorConfig.editorconfig
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.AssemblyInfoInputs.cache
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.AssemblyInfo.cs
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.csproj.CoreCompileInputs.cache
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.dll
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\obj\Debug\net6.0\refint\GibbousTetris.dll
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.pdb
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\obj\Debug\net6.0\GibbousTetris.genruntimeconfig.cache
+D:\MOON006 - C# - Gibbous Tetris\GibbousTetris\obj\Debug\net6.0\ref\GibbousTetris.dll

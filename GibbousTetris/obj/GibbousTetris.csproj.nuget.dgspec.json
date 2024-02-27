@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MOON006 - C# - Gibbous Tetris\\GibbousTetris\\GibbousTetris.csproj": {}
+    "D:\\MOON006_CSharp_Gibbous_Tetris\\GibbousTetris\\GibbousTetris.csproj": {}
   },
   "projects": {
-    "D:\\MOON006 - C# - Gibbous Tetris\\GibbousTetris\\GibbousTetris.csproj": {
+    "D:\\MOON006_CSharp_Gibbous_Tetris\\GibbousTetris\\GibbousTetris.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MOON006 - C# - Gibbous Tetris\\GibbousTetris\\GibbousTetris.csproj",
+        "projectUniqueName": "D:\\MOON006_CSharp_Gibbous_Tetris\\GibbousTetris\\GibbousTetris.csproj",
         "projectName": "GibbousTetris",
-        "projectPath": "D:\\MOON006 - C# - Gibbous Tetris\\GibbousTetris\\GibbousTetris.csproj",
+        "projectPath": "D:\\MOON006_CSharp_Gibbous_Tetris\\GibbousTetris\\GibbousTetris.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\MOON006 - C# - Gibbous Tetris\\GibbousTetris\\obj\\",
+        "outputPath": "D:\\MOON006_CSharp_Gibbous_Tetris\\GibbousTetris\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
